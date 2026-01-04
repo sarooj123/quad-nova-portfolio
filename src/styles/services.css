@@ -1,0 +1,622 @@
+/* =========================================================
+   SERVICES PAGE — FULL CSS (premium, no tailwind)
+   Works with your global.css: .container .glass .btn etc
+========================================================= */
+
+.services-page{
+  position: relative;
+  overflow: hidden;
+  padding: 32px 0 70px;
+}
+
+/* ===============================
+   PREMIUM FX BACKGROUND
+================================ */
+.fx-bg{
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.fx-grid{
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to right, rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 70px 70px;
+  mask-image: radial-gradient(circle at 40% 15%, black 0%, transparent 60%);
+  opacity: .55;
+}
+
+.fx-particles{
+  position: absolute;
+  inset: -20%;
+  background-image:
+    radial-gradient(circle, rgba(250,204,21,0.18) 1px, transparent 2px),
+    radial-gradient(circle, rgba(168,85,247,0.16) 1px, transparent 2px),
+    radial-gradient(circle, rgba(236,72,153,0.12) 1px, transparent 2px);
+  background-size: 220px 220px, 260px 260px, 320px 320px;
+  background-position: 0 0, 40px 90px, 80px 30px;
+  animation: drift 18s linear infinite;
+  opacity: .9;
+  filter: blur(.2px);
+}
+
+@keyframes drift{
+  from{ transform: translate3d(0,0,0); }
+  to{ transform: translate3d(-120px, 90px, 0); }
+}
+
+.fx-vignette{
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 10%, transparent 0%, rgba(0,0,0,0.55) 70%);
+  opacity: .9;
+}
+
+/* ===============================
+   SCROLL REVEAL (works with useReveal hook)
+================================ */
+[data-reveal]{
+  opacity: 0;
+  transform: translateY(14px) scale(.985);
+  filter: blur(6px);
+  transition: opacity .6s ease, transform .6s ease, filter .6s ease;
+}
+
+[data-reveal].is-in{
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  filter: blur(0);
+}
+
+/* ===============================
+   HERO
+================================ */
+.srv-hero{
+  display:grid;
+  grid-template-columns: 1.25fr .95fr;
+  gap: 20px;
+  align-items: start;
+  margin-top: 12px;
+  position: relative;
+}
+
+.srv-pill{
+  display:inline-flex;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.06);
+  font-size: 12px;
+  opacity: .92;
+}
+
+.srv-title{
+  margin-top: 12px;
+  font-size: 40px;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+
+.srv-title-glow{
+  display:inline-block;
+  background: linear-gradient(135deg, rgba(168,85,247,1), rgba(236,72,153,1), rgba(250,204,21,.95));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.srv-sub{
+  margin-top: 12px;
+  max-width: 680px;
+  opacity: .75;
+  line-height: 1.75;
+}
+
+.srv-hero-actions{
+  margin-top: 18px;
+  display:flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.arrow{ font-weight: 900; }
+
+/* KPIs */
+.srv-kpis{
+  margin-top: 16px;
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.srv-kpi{
+  padding: 12px;
+  border-radius: 16px;
+}
+
+.kpi-num{
+  font-weight: 900;
+  letter-spacing: -0.01em;
+}
+
+.kpi-txt{
+  margin-top: 4px;
+  font-size: 12px;
+  opacity: .75;
+  line-height: 1.4;
+}
+
+/* Right visuals */
+.srv-hero-right{
+  position: relative;
+  min-height: 440px;
+}
+
+.srv-orb{
+  position:absolute;
+  right: 0;
+  top: 18px;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: radial-gradient(circle at top left,
+      rgba(168,85,247,.40),
+      rgba(236,72,153,.18) 45%,
+      rgba(250,204,21,.10) 70%,
+      transparent 72%);
+  opacity: .9;
+  transform: translateZ(0);
+}
+
+.srv-orb-inner{
+  position:absolute;
+  inset: 18px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 30%, rgba(255,255,255,.12), transparent 60%);
+  border: 1px solid rgba(255,255,255,0.10);
+}
+
+.srv-preview{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: min(420px, 100%);
+  padding: 14px;
+  border-radius: 22px;
+}
+
+.srv-preview-top{
+  display:flex;
+  align-items:center;
+  gap: 8px;
+}
+
+.dot{
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.18);
+  border: 1px solid rgba(255,255,255,0.10);
+}
+
+.srv-preview-badge{
+  margin-left: auto;
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(168,85,247,0.12);
+  border: 1px solid rgba(168,85,247,0.24);
+}
+
+/* ===============================
+   3D LOGO MOCK CARD
+================================ */
+.logo-mock{
+  position: relative;
+  margin-top: 12px;
+  border-radius: 18px;
+  overflow: hidden;
+  background: rgba(0,0,0,0.22);
+  border: 1px solid rgba(255,255,255,0.10);
+  padding: 14px;
+  transform: perspective(900px) rotateY(-10deg) rotateX(6deg);
+  box-shadow: 0 26px 80px rgba(0,0,0,0.45);
+}
+
+.logo-mock img{
+  width: 100%;
+  height: 170px;
+  object-fit: cover;
+  border-radius: 14px;
+  display: block;
+}
+
+.logo-glow{
+  position: absolute;
+  inset: -30%;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(168,85,247,0.30), transparent 60%),
+    radial-gradient(circle at 70% 60%, rgba(250,204,21,0.18), transparent 60%);
+  filter: blur(10px);
+  opacity: .9;
+  pointer-events: none;
+}
+
+.srv-preview:hover .logo-mock{
+  transform: perspective(900px) rotateY(-6deg) rotateX(4deg) translateY(-2px);
+  transition: transform .25s ease;
+}
+
+.srv-preview-body{
+  margin-top: 12px;
+}
+
+.srv-preview-body h3{
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.srv-preview-body ul{
+  margin-top: 10px;
+  list-style: none;
+  display:grid;
+  gap: 10px;
+  font-size: 13px;
+  opacity: .85;
+}
+
+.srv-preview-body li{
+  display:flex;
+  gap: 10px;
+  align-items:center;
+}
+
+.srv-preview-body li::before{
+  content:"";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(250,204,21,.86);
+  box-shadow: 0 0 18px rgba(250,204,21,.20);
+}
+
+.srv-preview-cta{
+  margin-top: 12px;
+}
+
+/* ===============================
+   SECTIONS
+================================ */
+.srv-section{
+  margin-top: 46px;
+}
+
+.srv-h2{
+  font-size: 26px;
+  letter-spacing: -0.02em;
+}
+
+.srv-p{
+  margin-top: 8px;
+  opacity: .72;
+  line-height: 1.7;
+  max-width: 720px;
+}
+
+/* ===============================
+   SERVICES GRID (6 cards)
+================================ */
+.srv-grid{
+  margin-top: 18px;
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.srv-grid.srv-grid-6{
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.srv-card{
+  position: relative;
+  padding: 18px;
+  border-radius: 22px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
+  border: 1px solid rgba(255,255,255,0.14);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 26px 70px rgba(0,0,0,0.45);
+  overflow: hidden;
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+
+.srv-card:hover{
+  transform: translateY(-6px);
+  box-shadow: 0 40px 120px rgba(0,0,0,0.60), 0 0 60px rgba(168,85,247,.14);
+}
+
+.srv-card-top{
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.srv-icon{
+  width: 48px;
+  height: 48px;
+  border-radius: 16px;
+  display:grid;
+  place-items:center;
+  background: rgba(0,0,0,0.18);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.92);
+  box-shadow: 0 0 30px rgba(168,85,247,.15);
+}
+
+.srv-tag{
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  opacity: .92;
+}
+
+.srv-card-title{
+  margin-top: 12px;
+  font-weight: 900;
+  font-size: 16px;
+}
+
+.srv-card-desc{
+  margin-top: 8px;
+  opacity: .75;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.srv-bullets{
+  margin-top: 12px;
+  list-style: none;
+  display:grid;
+  gap: 10px;
+  font-size: 13px;
+  opacity: .88;
+}
+
+.srv-bullets li{
+  display:flex;
+  gap: 10px;
+  align-items:center;
+}
+
+.srv-bullets li::before{
+  content:"";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(250,204,21,.86);
+}
+
+.srv-card-bottom{
+  margin-top: 14px;
+  display:flex;
+  justify-content: space-between;
+  align-items:center;
+}
+
+.srv-link{
+  font-weight: 900;
+  opacity: .86;
+}
+
+.srv-card:hover .srv-link{ opacity: 1; }
+
+.srv-shine{
+  position:absolute;
+  inset: -40% -30%;
+  background: linear-gradient(120deg, transparent 45%, rgba(255,255,255,0.14), transparent 60%);
+  transform: rotate(12deg) translateX(-20%);
+  opacity: 0;
+  transition: opacity .2s ease, transform .35s ease;
+  pointer-events:none;
+}
+
+.srv-card:hover .srv-shine{
+  opacity: .30;
+  transform: rotate(12deg) translateX(25%);
+}
+
+/* ===============================
+   PROCESS
+================================ */
+.srv-steps{
+  margin-top: 16px;
+  display:grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.srv-step{
+  padding: 14px;
+  border-radius: 18px;
+}
+
+.step-n{
+  font-weight: 900;
+  opacity: .78;
+}
+
+.step-t{
+  margin-top: 8px;
+  font-weight: 900;
+}
+
+.step-d{
+  margin-top: 6px;
+  font-size: 12.5px;
+  opacity: .75;
+  line-height: 1.6;
+}
+
+/* ===============================
+   COURSES
+================================ */
+.courses{
+  margin-top: 18px;
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.course{
+  position: relative;
+  border-radius: 22px;
+  padding: 18px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  box-shadow: 0 26px 70px rgba(0,0,0,0.45);
+  overflow: hidden;
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+
+.course:hover{
+  transform: translateY(-6px);
+  box-shadow: 0 40px 120px rgba(0,0,0,0.60), 0 0 60px rgba(168,85,247,.14);
+}
+
+.course.highlight{
+  background: linear-gradient(180deg, rgba(168,85,247,0.14), rgba(255,255,255,0.06));
+  border: 1px solid rgba(168,85,247,0.26);
+  box-shadow: 0 35px 120px rgba(168,85,247,0.12), 0 26px 70px rgba(0,0,0,0.45);
+}
+
+.course-top{
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.course-level{
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  opacity: .92;
+}
+
+.course-badge{
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(250,204,21,0.10);
+  border: 1px solid rgba(250,204,21,0.22);
+  color: rgba(255,255,255,0.92);
+}
+
+.course-title{
+  margin-top: 12px;
+  font-weight: 900;
+  font-size: 16px;
+}
+
+.course-desc{
+  margin-top: 8px;
+  opacity: .75;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.course-topics{
+  margin-top: 12px;
+  list-style: none;
+  display:grid;
+  gap: 10px;
+  font-size: 13px;
+  opacity: .88;
+}
+
+.course-topics li{
+  display:flex;
+  gap: 10px;
+  align-items:center;
+}
+
+.course-topics li::before{
+  content:"";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(250,204,21,.86);
+}
+
+.course-actions{
+  margin-top: 14px;
+}
+
+.course-shine{
+  position:absolute;
+  inset: -40% -30%;
+  background: linear-gradient(120deg, transparent 45%, rgba(255,255,255,0.14), transparent 60%);
+  transform: rotate(12deg) translateX(-20%);
+  opacity: 0;
+  transition: opacity .2s ease, transform .35s ease;
+  pointer-events:none;
+}
+
+.course:hover .course-shine{
+  opacity: .30;
+  transform: rotate(12deg) translateX(25%);
+}
+
+/* ===============================
+   CTA
+================================ */
+.srv-cta{
+  margin-top: 46px;
+  padding: 18px;
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  gap: 16px;
+  border-radius: 22px;
+}
+
+.muted{
+  margin-top: 6px;
+  opacity: .75;
+  line-height: 1.7;
+}
+
+/* ===============================
+   HELPERS
+================================ */
+.w-100{ width: 100%; }
+
+/* ===============================
+   RESPONSIVE
+================================ */
+@media (max-width: 1020px){
+  .srv-hero{ grid-template-columns: 1fr; }
+  .srv-hero-right{ min-height: 360px; }
+
+  .srv-grid,
+  .srv-grid.srv-grid-6{
+    grid-template-columns: 1fr;
+  }
+
+  .srv-steps{ grid-template-columns: 1fr 1fr; }
+  .courses{ grid-template-columns: 1fr; }
+}
+
+@media (max-width: 520px){
+  .srv-title{ font-size: 30px; }
+  .srv-kpis{ grid-template-columns: 1fr; }
+  .srv-cta{ flex-direction: column; align-items: stretch; }
+}
